@@ -23,7 +23,6 @@ public:
     }
 };
 
-
 int main() {
     RecentCounter* obj = new RecentCounter();
 

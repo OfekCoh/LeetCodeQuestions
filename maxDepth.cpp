@@ -11,7 +11,7 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-// Function to find the maximum depth of a binary tree.
+// Function to find the maximum depth of a binary tree
 int maxDepth(TreeNode* root) {
     if (!root) return 0;
     int left, right;

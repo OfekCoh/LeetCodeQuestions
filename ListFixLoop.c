@@ -1,3 +1,5 @@
+/* find the loop and fix it */
+
 #include <stdio.h>
 #include <stdlib.h>
 

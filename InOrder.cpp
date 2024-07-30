@@ -11,7 +11,7 @@ struct TreeNode
     TreeNode(int val=0, TreeNode* left=nullptr, TreeNode* right=nullptr): val(val), left(left), right(right) {}
 };
 
-// just a normal implementation of dfs
+// just a normal implementation of dfs algo
 void InORder(TreeNode* head)
 {
     if(!head) return;

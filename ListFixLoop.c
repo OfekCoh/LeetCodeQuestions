@@ -1,4 +1,4 @@
-
+/* find the loop in the list and fix it */
 #include <stdio.h>
 #include <stdlib.h>
 

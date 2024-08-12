@@ -6,40 +6,34 @@
 using namespace std;
 
 
-void bfs(string start, string end, map<string, vector<string>>& graph, map<pair<string, string>, double>& w) {
-    if (graph.find(start) == graph.end() || graph.find(end) == graph.end()) {
-        cout << "0"; // Start or end node not in the graph
-        return;
-    }
-    if (start == end) {
-        cout << "1"; // Start and end are the same
-        return;
-    }
-
-    map<string, string> parent;  // Save the "parent" of each node
+bool bfs(string start, string end, map<string, vector<string>>& graph, map<pair<string, string>, double>& w) 
+{
+    if (graph.find(start) == graph.end() || graph.find(end) == graph.end()) return 0; // Start or end node not in the graph
+    if (start == end) return 1; // Start and end are the same
+       
     queue<string> q;
     set<string> visited;
 
     q.push(start);
     visited.insert(start);
 
-    while (!q.empty()) {
+    while (!q.empty()) 
+    {
         string t = q.front();
         q.pop();
 
-        if (t == end) {
-            cout << "1"; // Path found
-            return;
-        }
+        if (t == end) return 1; // Path found
 
-        for (const auto& neighbor : graph[t]) {
-            if (visited.find(neighbor) == visited.end()) { // If neighbor has not been visited
+        for (auto neighbor : graph[t]) 
+        {
+            if (visited.find(neighbor) == visited.end()) // If neighbor has not been visited
+            { 
                 visited.insert(neighbor);
                 q.push(neighbor);
             }
         }
     }
-    cout << "0"; // No path found
+    return 0; // No path found
 }
 
 
@@ -58,7 +52,7 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
         w[{edges[i][0],edges[i][1]}]= weights[i];   // w[{a,b}]=2
     }
 
-    bfs("a", "c",graph,w);
+    cout << bfs("a", "c",graph,w);
 }
 
 

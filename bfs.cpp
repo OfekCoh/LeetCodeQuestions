@@ -36,7 +36,6 @@ bool bfs(string start, string end, map<string, vector<string>>& graph)
     return 0; // No path found
 }
 
-
 void printGraph(map< string , vector<string >> graph, map< pair<string,string> , double > w) 
 {
     // Print the graph structure
@@ -59,7 +58,6 @@ void printGraph(map< string , vector<string >> graph, map< pair<string,string> ,
     }
 }
 
-
 void createGraph(vector<vector<string>>& edges, vector<double>& weights) 
 {
     map< string , vector<string >> graph;   // graph(node a)=[b,c,d]  vector of neighbors 
@@ -79,7 +77,6 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
 
     cout << "Is there a path from a to c ? answer: " << bfs("a", "c", graph);
 }
-
 
 int main() 
 {

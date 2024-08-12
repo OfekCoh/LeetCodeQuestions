@@ -45,7 +45,6 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
 
 }
 
-
 int main() 
 {
     vector<vector<string>> edges = {{"a", "b"}, {"b", "c"}};

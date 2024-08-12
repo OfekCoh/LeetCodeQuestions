@@ -18,6 +18,25 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
         // add weights to edges
         w[{edges[i][0],edges[i][1]}]= weights[i];   // w[{a,b}]=2
     }
+
+    // Print the graph structure
+    cout << "Graph:" << endl;
+    for (const auto& node : graph)
+    {
+        cout << node.first << " -> ";
+        for (const auto& neighbor : node.second)
+        {
+            cout << neighbor << " ";
+        }
+        cout << endl;
+    }
+    
+    // Print the weights of the edges
+    cout << "Weights:" << endl;
+    for (const auto& edge : w)
+    {
+        cout << "(" << edge.first.first << ", " << edge.first.second << ") : " << edge.second << endl;
+    }
 }
 
 

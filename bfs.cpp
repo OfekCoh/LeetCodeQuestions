@@ -6,7 +6,7 @@
 using namespace std;
 
 
-bool bfs(string start, string end, map<string, vector<string>>& graph, map<pair<string, string>, double>& w) 
+bool bfs(string start, string end, map<string, vector<string>>& graph) 
 {
     if (graph.find(start) == graph.end() || graph.find(end) == graph.end()) return 0; // Start or end node not in the graph
     if (start == end) return 1; // Start and end are the same
@@ -37,6 +37,29 @@ bool bfs(string start, string end, map<string, vector<string>>& graph, map<pair<
 }
 
 
+void printGraph(map< string , vector<string >> graph, map< pair<string,string> , double > w) 
+{
+    // Print the graph structure
+    cout << "Graph:" << endl;
+    for (const auto& node : graph)
+    {
+        cout << node.first << " -> ";
+        for (const auto& neighbor : node.second)
+        {
+            cout << neighbor << " ";
+        }
+        cout << endl;
+    }
+    
+    // Print the weights of the edges
+    cout << "Weights:" << endl;
+    for (const auto& edge : w)
+    {
+        cout << "(" << edge.first.first << "," << edge.first.second << ") = " << edge.second << endl;
+    }
+}
+
+
 void createGraph(vector<vector<string>>& edges, vector<double>& weights) 
 {
     map< string , vector<string >> graph;   // graph(node a)=[b,c,d]  vector of neighbors 
@@ -52,7 +75,9 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
         w[{edges[i][0],edges[i][1]}]= weights[i];   // w[{a,b}]=2
     }
 
-    cout << bfs("a", "c",graph,w);
+    // printGraph(graph,w);
+
+    cout << "Is there a path from a to c ? answer: " << bfs("a", "c", graph);
 }
 
 

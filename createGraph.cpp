@@ -10,7 +10,7 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
     map< pair<string,string> , double > w; // w(<a,b>)=5
     
     // create the graph
-    for(int i=0; i<edges.size();i++)
+    for(int i=0; i<weights.size();i++)
     {
         // add nodes and edges
         graph[edges[i][0]].push_back(edges[i][1]);  

@@ -36,6 +36,7 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
     {
         // add nodes and edges
         graph[edges[i][0]].push_back(edges[i][1]);   // graph[a]=[b]
+        if(graph.find(edges[i][1]) == graph.end()) graph[edges[i][1]] = {};  //create the destination node too
 
         // add weights to edges
         w[{edges[i][0],edges[i][1]}]= weights[i];   // w[{a,b}]=2

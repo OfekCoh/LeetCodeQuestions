@@ -6,7 +6,7 @@
 using namespace std;
 
 
-bool bfs(string start, string end, map<string, vector<string>>& graph) 
+bool bfs(string start, string end, map<string, vector<string>> graph) 
 {
     if (graph.find(start) == graph.end() || graph.find(end) == graph.end()) return 0; // Start or end node not in the graph
     if (start == end) return 1; // Start and end are the same
@@ -22,10 +22,9 @@ bool bfs(string start, string end, map<string, vector<string>>& graph)
         string t = q.front();
         q.pop();
 
-        if (t == end) return 1; // Path found
-
         for (auto neighbor : graph[t]) 
         {
+            if (neighbor == end) return 1; // Path found
             if (visited.find(neighbor) == visited.end()) // If neighbor has not been visited
             { 
                 visited.insert(neighbor);
@@ -68,7 +67,8 @@ void createGraph(vector<vector<string>>& edges, vector<double>& weights)
     {
         // add nodes and edges
         graph[edges[i][0]].push_back(edges[i][1]);   // graph[a]=[b]
-
+        if(graph.find(edges[i][1]) == graph.end()) graph[edges[i][1]] = {};  //create the destination node too
+        
         // add weights to edges
         w[{edges[i][0],edges[i][1]}]= weights[i];   // w[{a,b}]=2
     }

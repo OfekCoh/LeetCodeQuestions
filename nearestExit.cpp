@@ -8,18 +8,19 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
     int m=maze.size(), n=maze[0].size();
     entrance.push_back(0); // add counter for steps
     q.push(entrance);
+    maze[entrance[0]][entrance[1]]='+';
 
     while(!q.empty())
     {
         vector<int> temp= q.front();
         q.pop();
         int i=temp[0], j=temp[1], count=temp[2];
-        maze[i][j]='+';
 
         if(i-1>=0) { // up
             if(maze[i-1][j]=='.') {
                 if(i-1==0 || j==0 || j==n-1) return count+1;
                 q.push(vector<int> {i-1,j,count+1});
+                maze[i-1][j]='+';
             }
         }
         
@@ -27,6 +28,7 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
             if(maze[i+1][j]=='.') {
                 if(i+1 == m-1 || j==0 || j==n-1) return count+1;
                 q.push(vector<int> {i+1,j,count+1});
+                maze[i+1][j]='+';
             }
         }
         
@@ -34,6 +36,7 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
             if(maze[i][j-1]=='.') {
                 if(j-1 == 0 || i==0 || i==m-1) return count+1;
                 q.push(vector<int> {i,j-1,count+1});
+                maze[i][j-1]='+';
             }
 
         }
@@ -42,6 +45,7 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
             if(maze[i][j+1]=='.') {
                 if(j+1 == n-1 || i==0 || i==m-1) return count+1;
                 q.push(vector<int> {i,j+1,count+1});
+                maze[i][j+1]='+';
             }
         }
     }

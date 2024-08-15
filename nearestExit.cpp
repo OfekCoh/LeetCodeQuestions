@@ -14,7 +14,7 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
     int m=maze.size(), n=maze[0].size();
     entrance.push_back(0); // add counter for steps
     q.push(entrance);
-    maze[entrance[0]][entrance[1]]='+';
+    maze[entrance[0]][entrance[1]]='+';  // mark the entrance
 
     while(!q.empty())
     {
@@ -26,7 +26,7 @@ int nearestExit(vector<vector<char>>& maze, vector<int>& entrance) {
             if(maze[i-1][j]=='.') {
                 if(i-1==0 || j==0 || j==n-1) return count+1;
                 q.push(vector<int> {i-1,j,count+1});
-                maze[i-1][j]='+';
+                maze[i-1][j]='+';     // we mark as visited so that others wont be able to mark them as well 
             }
         }
         

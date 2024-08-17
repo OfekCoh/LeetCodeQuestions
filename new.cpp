@@ -32,10 +32,11 @@ long long maxScore(vector<int>& nums1, vector<int>& nums2, int k)
 
 int main()
 {
-    vector<int> nums1={};
-    vector<int> nums2={};
+    vector<int> nums1={2,1,14,12};
+    vector<int> nums2={11,7,13,6};
     int k=3;
 
     cout<< maxScore(nums1, nums2, k);
     return 0;
 }
+

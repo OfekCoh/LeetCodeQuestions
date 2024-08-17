@@ -5,40 +5,35 @@ using namespace std;
 
 long long maxScore(vector<int>& nums1, vector<int>& nums2, int k)
 {    
-    int n=nums1.size(), i=0, temp=0;
-    long long max=0, sum=0;
+    int n=nums1.size();
+    long long max=0, sum=0,temp=0;
     vector<pair<int,int>> paired;
     
     // sort num2 and keep track of the original indexes
-    for(i=0; i<n; i++) paired.push_back({nums2[i],i});
+    for(int i=0; i<n; i++) paired.push_back({nums2[i],i});
     sort(paired.begin(), paired.end());
 
-    // now nums2 is nums1 with the sorted indexes of original nums2
-    for(i=0;i<n;i++) nums2[i]=nums1[paired[i].second]; 
+    // Create vector B for nums1 values sorted like nums2
+    vector<int> B(n);
+    for(int i=0;i<n;i++) B[i]=nums1[paired[i].second]; 
 
-    // create min heap of size k
-    vector<int> A;
-    vector<int> B;
+    // Create min-heap of the first k elements from B
+    vector<int> minHeap(B.end() - k, B.end());
+    make_heap(minHeap.begin(), minHeap.end(), greater<int>());
+    
+    for(int i=0;i<k;i++) sum+=minHeap[i];
+    max=sum*paired[n-k].first;  
 
-    for(i=n-1;i>=0;i--){
-        A.push_back(nums2[i]);
-        B.push_back(paired[i].first);
-    }
-
-    // make the heap
-    make_heap(A.begin(), A.begin()+k, greater<int>());
-    for(i=0;i<k;i++) sum+=A[i];
-    max=sum*B[k-1];
-
-    // check all elements with the new min B[i]
-    for(i=k;i<n;i++) {
-        if(A[i]>A[0]){   // A[0]=A.top()
-            sum-=A[0];
-            A[0]=A[i];
-            sum+=A[i];
-            push_heap(A.begin(),A.begin()+k,greater<int>());
+    // check all elements with the new min paired[i].first
+    for(int i=n-k-1;i>=0;i--) {
+        if(B[i]>minHeap[0]){   // A[0]=A.top()
+            sum+=B[i]-minHeap[0];
+            pop_heap(minHeap.begin(), minHeap.end(), greater<int>());
+            minHeap.pop_back();
+            minHeap.push_back(B[i]);
+            push_heap(minHeap.begin(),minHeap.end(),greater<int>());
         }
-        temp=sum*B[i];
+        temp=sum*paired[i].first;
         if(temp>max) max=temp;
     }   
 
@@ -55,3 +50,16 @@ int main()
     return 0;
 }
 
+// k=3
+// n=4
+
+// nums1 = 2 1 14 12   
+// nums2 = 11 7 13 6 
+
+// paired=  (6,3), (7,1), (11,0), (13,2)
+
+// minHeap = 1 2 14         
+// B = 12 {1 2 14}
+
+// sum= 0
+// max= 0

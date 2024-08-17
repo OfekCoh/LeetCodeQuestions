@@ -5,7 +5,7 @@ using namespace std;
 
 long long maxScore(vector<int>& nums1, vector<int>& nums2, int k)
 {    
-    int n=nums1.size(), i=0, j=0;
+    int n=nums1.size(), i=0, temp=0;
     long long max=0, sum=0;
     vector<pair<int,int>> paired;
     
@@ -16,16 +16,31 @@ long long maxScore(vector<int>& nums1, vector<int>& nums2, int k)
     // now nums2 is nums1 with the sorted indexes of original nums2
     for(i=0;i<n;i++) nums2[i]=nums1[paired[i].second]; 
 
-    // for each min in paired calc 
-    for(j=0;j<k;j++) sum+=nums2[j];
-    max=sum*paired[0].first;
+    // create min heap of size k
+    vector<int> A;
+    vector<int> B;
 
-    for(i=1;i<=n-k;i++)
-    {
-        sum-=nums2[i-1];
-        sum+=nums2[j++];
-        if(sum*paired[i].first > max) max= sum*paired[i].first;
+    for(i=n-1;i>=0;i--){
+        A.push_back(nums2[i]);
+        B.push_back(paired[i].first);
     }
+
+    // make the heap
+    make_heap(A.begin(), A.begin()+k, greater<int>());
+    for(i=0;i<k;i++) sum+=A[i];
+    max=sum*B[k-1];
+
+    // check all elements with the new min B[i]
+    for(i=k;i<n;i++) {
+        if(A[i]>A[0]){   // A[0]=A.top()
+            sum-=A[0];
+            A[0]=A[i];
+            sum+=A[i];
+            push_heap(A.begin(),A.begin()+k,greater<int>());
+        }
+        temp=sum*B[i];
+        if(temp>max) max=temp;
+    }   
 
     return max;
 }

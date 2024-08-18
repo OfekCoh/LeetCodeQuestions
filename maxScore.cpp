@@ -61,5 +61,3 @@ int main()
 // minHeap = 1 2 14         
 // B = 12 {1 2 14}
 
-// sum= 0
-// max= 0

@@ -9,14 +9,13 @@
 
 #include <iostream>
 using namespace std;
-
+#define PICK 6  // Assume the number picked is 6 for this example
 
 // Mock of the guess API (to be provided)
 int guess(int num) 
 {
-    int pick = 6; // Assume the number picked is 6 for this example
-    if (num > pick) return -1;
-    if (num < pick) return 1;
+    if (num > PICK) return -1;
+    if (num < PICK) return 1;
     return 0;
 }
 

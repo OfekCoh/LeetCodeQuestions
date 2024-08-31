@@ -11,7 +11,7 @@
 using namespace std;
 #define PICK 6  // Assume the number picked is 6 for this example
 
-// Mock of the guess API (to be provided)
+
 int guess(int num) 
 {
     if (num > PICK) return -1;

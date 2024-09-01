@@ -33,7 +33,7 @@ int guessNumber(int n)
 
 int main() 
 {
-    int n = 10; // Example range
+    int n = 6; // Example range
     int result = guessNumber(n);
     cout << "The picked number is " << result << endl;
     return 0;

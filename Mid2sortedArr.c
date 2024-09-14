@@ -19,6 +19,5 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     }
     mid=arr[n/2];
     free(arr);
-    
     return mid;
 }

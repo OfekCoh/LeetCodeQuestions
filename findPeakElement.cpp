@@ -7,7 +7,8 @@
 #include <vector>
 using namespace std;
 
-int findPeakElement(vector<int>& nums) {
+int findPeakElement(vector<int>& nums) 
+{
     int mid, n=nums.size();
     int low=0, high=n-1;
 
@@ -23,7 +24,8 @@ int findPeakElement(vector<int>& nums) {
     return mid;
 }
 
-int main() {
+int main() 
+{
     vector<int> vec={1,2,1,3,5,6,4};
     cout << findPeakElement(vec);
     return 0;

@@ -13,8 +13,8 @@ int findPeakElement(vector<int>& nums) {
 
     while(low<=high) {
         mid= (high+low)/2;
-        int right= (mid!=n)? nums[mid+1] : INT_MIN ; 
-        int left= (mid!=-1)? nums[mid-1] : INT_MIN ; 
+        int right= (mid+1==n)? INT_MIN : nums[mid+1] ; 
+        int left= (mid==0)? INT_MIN : nums[mid-1] ;
         
         if( nums[mid]>right && nums[mid]>left ) return mid;
         if(right>left) low=mid+1;

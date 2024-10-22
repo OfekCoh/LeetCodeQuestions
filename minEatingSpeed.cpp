@@ -3,11 +3,11 @@
 #include <vector>
 using namespace std;
 
-int minEatingSpeed(vector<int>& piles, int h) {
+int minEatingSpeed(vector<int>& piles, int h)
+{
     int low=1, high=*max_element(piles.begin(), piles.end()), mid;
 
-    while(low<=high)
-    {
+    while(low<=high) {
         mid=(low+high)/2;
         long long sum=0;
         for(int num: piles) {

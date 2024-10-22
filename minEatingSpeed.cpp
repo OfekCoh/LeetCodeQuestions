@@ -19,3 +19,11 @@ int minEatingSpeed(vector<int>& piles, int h)
     }
     return low;
 }
+
+int main()
+{
+    int h=6;
+    vector<int> piles={34};
+    cout << minEatingSpeed(piles,h);
+    return 0;
+}

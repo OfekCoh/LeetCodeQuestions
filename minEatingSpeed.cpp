@@ -7,8 +7,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-using std::cout;
-using std::vector;
+using namespace std;
 
 int minEatingSpeed(vector<int>& piles, int h)
 {

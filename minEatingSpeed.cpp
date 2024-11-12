@@ -28,7 +28,7 @@ int minEatingSpeed(vector<int>& piles, int h)
 
 int main()
 {
-    int h=6;
+    int h=12;
     vector<int> piles={34};
     cout << minEatingSpeed(piles,h);
     return 0;

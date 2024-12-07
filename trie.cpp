@@ -1,3 +1,10 @@
+// A trie (pronounced as "try") or prefix tree is a tree data structure used to efficiently store and retrieve keys in a dataset of strings. 
+// There are various applications of this data structure, such as autocomplete and spellchecker.
+
+#include <iostream>
+#include<vector>
+using namespace std;
+
 class Trie {
 private:
     vector<Trie*> letters;
@@ -42,3 +49,16 @@ public:
     }
 
 };
+
+int main()
+{
+    Trie* trie = new Trie();
+    trie->insert("apple");
+    cout<< trie->search("apple") <<endl;   // return True
+    cout<< trie->search("app") <<endl;     // return False
+    cout<< trie->startsWith("app") <<endl; // return True
+    trie->insert("app");
+    cout<< trie->search("app") <<endl;  
+
+    return 0;
+}

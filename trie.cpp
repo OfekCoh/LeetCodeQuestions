@@ -8,10 +8,10 @@ using namespace std;
 class Trie {
 private:
     vector<Trie*> letters;
-    bool ends;  // checks if the word ended in that tri (and not just a prefix)
+    bool isWord;  // checks if the word ended in that tri (and not just a prefix)
     
 public:
-    Trie(): letters(26,nullptr), ends(false){}
+    Trie(): letters(26,nullptr), isWord(false){}
     
     void insert(string word) {
         Trie* curr=this;
@@ -22,7 +22,7 @@ public:
             if(!curr->letters[i]) curr->letters[i]= new Trie;  // if the entrance for the letter is null, create a new trie. else just continue.
             curr=curr->letters[i];
         }        
-        curr->ends=true;
+        curr->isWord=true;
     }
     
     bool search(string word) {
@@ -33,7 +33,7 @@ public:
             if(!curr->letters[i]) return false;  // if the entrance for the letter is null, create a new trie. else just continue.
             curr=curr->letters[i];
         }    
-        if(!curr->ends) return false;
+        if(!curr->isWord) return false;
         return true;
     }
     

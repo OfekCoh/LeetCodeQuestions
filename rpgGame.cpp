@@ -40,13 +40,14 @@ class Character {
 
     // methods
     void attack(Character& target) {
-        int targetHp= target.getHp();
-        targetHp-=attackPower;
-        if (targetHp<=0) targetHp=0;
-        cout << name << " hit " << target.getName() << " for " << attackPower << " damage. HP left: " << targetHp << endl; 
+        target.takeDamage(attackPower);
     }
 
-    
+    void takeDamage(int amount) {
+        hp-=amount;
+        if(hp<0) hp=0; // can call destructor here if dead
+    }
 
+    virtual void displayStats()=0; // class is abstract
 };
 

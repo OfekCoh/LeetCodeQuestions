@@ -48,7 +48,9 @@ class Character {
         if(hp<0) hp=0; // can call destructor here if dead
     }
 
-    virtual void displayStats()=0; // class is abstract
+    virtual void displayStats(); 
+
+    virtual void specialAbility()=0; // class is abstract
 };
 
 class Warrior: public Character {
@@ -60,6 +62,10 @@ class Warrior: public Character {
         cout << "Name: " << getName() << endl;
         cout << "HP: " << getHp() << endl;
         cout << "Attack Power: " << getAttackPower() << endl;
+    }
+
+    void specialAbility() {
+        
     }
 };
 

@@ -9,6 +9,7 @@ struct TreeNode
     TreeNode* left;
 
     TreeNode(int val=0, TreeNode* left=nullptr, TreeNode* right=nullptr): val(val), left(left), right(right) {}
+
 };
 
 // just a normal implementation of dfs.
